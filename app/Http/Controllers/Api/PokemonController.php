@@ -59,6 +59,12 @@ class PokemonController extends Controller
     public function destroy(Pokemon $pokemon)
     {
         $pokemon->delete();
-        return response(null, ResponseAlias::HTTP_NO_CONTENT);
+        return response(ResponseAlias::HTTP_NO_CONTENT, null);
+    }
+
+    public function paginate()
+    {
+        $pokemon = Pokemon::paginate(5);
+        return response()->json($pokemon);
     }
 }

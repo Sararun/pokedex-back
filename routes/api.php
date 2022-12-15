@@ -1,8 +1,10 @@
 <?php
 
+use App\Models\Pokemon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PokemonController;
+use App\Http\Resources\PokemonResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('pokemons', PokemonController::class);
-
+Route::get('pokemons', [PokemonController::class, 'paginate']);
 
